@@ -18,34 +18,33 @@ function Sidebar ({ sidebarOpen, setSidebarOpen }) {
   // close on click outside
   useEffect(() => {
     const clickHandler = ({ target }) => {
-      if (!sidebar.current || !trigger.current) return
-      if (!sidebarOpen || sidebar.current.contains(target) ||
-        trigger.current.contains(target)) return
-      setSidebarOpen(false)
-    }
-    document.addEventListener('click', clickHandler)
-    return () => document.removeEventListener('click', clickHandler)
-  })
+      if (!sidebar.current || !trigger.current) return;
+      if (!sidebarOpen || sidebar.current.contains(target) || trigger.current.contains(target)) return;
+      setSidebarOpen(false);
+    };
+    document.addEventListener('click', clickHandler);
+    return () => document.removeEventListener('click', clickHandler);
+  });
 
   // close if the esc key is pressed
   useEffect(() => {
     const keyHandler = ({ keyCode }) => {
-      if (!sidebarOpen || keyCode !== 27) return
-      setSidebarOpen(false)
-    }
-    document.addEventListener('keydown', keyHandler)
-    return () => document.removeEventListener('keydown', keyHandler)
-  })
+      if (!sidebarOpen || keyCode !== 27) return;
+      setSidebarOpen(false);
+    };
+    document.addEventListener('keydown', keyHandler);
+    return () => document.removeEventListener('keydown', keyHandler);
+  });
 
   // toggle sidebar
   useEffect(() => {
-    localStorage.setItem('sidebar-expanded', sidebarExpanded)
+    localStorage.setItem('sidebar-expanded', sidebarExpanded);
     if (sidebarExpanded) {
-      document.querySelector('body').classList.add('sidebar-expanded')
+      document.querySelector('body').classList.add('sidebar-expanded');
     } else {
-      document.querySelector('body').classList.remove('sidebar-expanded')
+      document.querySelector('body').classList.remove('sidebar-expanded');
     }
-  }, [sidebarExpanded])
+  }, [sidebarExpanded]);
 
   // Get warning icon, if needed
   function getIcon () {
@@ -76,8 +75,8 @@ function Sidebar ({ sidebarOpen, setSidebarOpen }) {
       <div
         id="sidebar"
         ref={sidebar}
-        className={`flex flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:tranzinc-x-0 h-screen overflow-y-scroll lg:overflow-y-auto no-scrollbar w-64 lg:w-20 lg:sidebar-expanded:!w-64 2xl:!w-64 shrink-0 bg-zinc-800 p-4 transition-all duration-200 ease-in-out ${
-          sidebarOpen ? 'tranzinc-x-0' : '-tranzinc-x-64'
+        className={`flex flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 h-screen overflow-y-scroll lg:overflow-y-auto no-scrollbar w-64 lg:w-20 lg:sidebar-expanded:!w-64 2xl:!w-64 shrink-0 bg-zinc-800 p-4 transition-all duration-200 ease-in-out ${
+          sidebarOpen ? 'translate-x-0' : '-translate-x-64'
         }`}
       >
         {/* Sidebar header */}
