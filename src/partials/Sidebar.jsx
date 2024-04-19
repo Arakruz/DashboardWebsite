@@ -112,7 +112,7 @@ function Sidebar ({ sidebarOpen, setSidebarOpen }) {
                 fill="#d97706"
               />
             </svg>
-            <h1 className="text-amber-300 hover:text-zinc-400 ml-4"> Atlas Farms</h1>
+            <h1 className="text-amber-300 hover:text-zinc-400 ml-4"> Farm Dashboard</h1>
           </NavLink>
         </div>
 
